@@ -1,0 +1,209 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+$bgBasketAndSectionColor: #F5F7FA;
+$whiteBgColor: #FFFFFF;
+$redBgColor: #F44336;
+
+html,
+body {
+  min-height: 100%;
+  font-family: Inter, sans-serif;
+}
+
+.wrapper {
+  min-height: 100%;
+  max-width: 100%;
+}
+
+.header {
+  max-width: 100%;
+  height: 83px;
+  margin: 0 15px;
+  background-color: $whiteBgColor;
+
+  .header__container {
+    max-width: 1264px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: right;
+    text-align: right;
+    padding: 10px 0 15px 0;
+  }
+
+  .basket a {
+    min-width: 181px;
+    height: 56px;
+    background-color: $bgBasketAndSectionColor;
+    color: #051D36;
+    font-weight: 400;
+    font-size: 16px;
+    padding: 16px 24px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+
+  .basket__price {
+    width: 80px;
+  }
+
+  .basket__count {
+    width: 24px;
+    height: 24px;
+    border-radius: 100%;
+    background-color: $redBgColor;
+    color: $whiteBgColor;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 11px;
+  }
+}
+
+.section__container {
+  background-color: $bgBasketAndSectionColor;
+  padding: 31px 15px;
+  height: 100%;
+}
+
+.section {
+  max-width: 1264px;
+  height: 100%;
+  margin: 0 auto;
+
+  h1 {
+    text-align: left;
+    margin-bottom: 31px;
+    font-weight: 500;
+    font-size: 40px;
+  }
+
+  .cards__content {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 1px;
+  }
+
+  .card {
+    width: 209px;
+    min-height: 416px;
+    padding: 15px 15px 24px 15px;
+    background-color: $whiteBgColor;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card__img {
+    width: 141px;
+    height: 145px;
+  }
+
+  .card__rating {
+    margin-top: 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .card__rating_stars {
+    display: flex;
+    align-items: center;
+  }
+
+  .card__rating_stars img {
+    display: flex;
+    align-items: center;
+  }
+
+  .card__description {
+    text-align: center;
+    margin: 8px 0 16px 0;
+    font-weight: 600;
+    font-size: 15px;
+    color: #333333;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    height: 55px;
+  }
+
+  .card__price {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card__oldPriceAndDiscountPercentage {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+
+    .card_oldPrice {
+      font-weight: 400;
+      font-size: 14px;
+      color: #808080;
+      text-decoration: line-through 1.5px solid rgba(244, 67, 54, 0.64);
+    }
+
+    .card_discount {
+      font-family: 'Inter', sans-serif;
+      background-color: $redBgColor;
+      font-weight: 700;
+      font-size: 11px;
+      line-height: 12px;
+      text-align: center;
+      padding: 4px 0;
+      color: $whiteBgColor;
+      width: 37px;
+      height: 20px;
+      border-radius: 4px;
+    }
+  }
+
+  .card__finalPrice {
+    text-align: center;
+    font-weight: 500;
+    font-size: 26px;
+    color: $redBgColor;
+  }
+
+  .card__btn_inBasket {
+    cursor: pointer;
+    width: 112px;
+    height: 40px;
+    margin-top: 26px;
+    border: 2px solid rgba(244, 67, 54, 0.3);
+    border-radius: 6px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: $redBgColor;
+    background-color: $whiteBgColor;
+
+    &:hover {
+      background-color: rgba(250, 225, 225, 0.3);
+    }
+  }
+}
+
+@media (max-width: 888px) {
+  h1 {
+    display: flex;
+    justify-content: center;
+  }
+  .card {
+    margin: 3px;
+  }
+}
+
