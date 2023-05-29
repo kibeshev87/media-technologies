@@ -13,7 +13,8 @@ async function fetchTasks() {
 
         let allStars = '';
         for (let i = 0; i < ratingCount; i++) {
-            allStars += `<img src="../assets/images/star.svg" alt="Рейтинг">`
+            // allStars += `<img src="../assets/images/star.svg" alt="Рейтинг">`
+            allStars += `<img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="Рейтинг">`
         }
 
         card.innerHTML += `

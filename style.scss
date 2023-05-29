@@ -121,6 +121,8 @@ body {
   .card__rating_stars img {
     display: flex;
     align-items: center;
+    max-width: 84px;
+    max-height: 16px;
   }
 
   .card__description {
