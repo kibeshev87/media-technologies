@@ -11,34 +11,9 @@ async function fetchTasks() {
         let priceAfterDiscount = Math.round(basePrice - (basePrice / 100 * discountPercentage))
         let ratingCount = Math.round(items[key].rating)
 
-        let allStars;
-        if (ratingCount === 1) {
-            allStars = `<img src="../assets/images/Star-1.svg" alt="Рейтинг товара">`
-        }
-        if (ratingCount === 2) {
-            allStars = `<img src="../assets/images/Star-1.svg" alt="Рейтинг товара">
-                        <img src="../assets/images/Star-1.svg" alt="Рейтинг товара">`
-        }
-        if (ratingCount === 3) {
-            allStars = `<img src="../assets/images/Star-1.svg" alt="Рейтинг товара">
-                        <img src="../assets/images/Star-1.svg" alt="Рейтинг товара">
-                        <img src="../assets/images/Star-1.svg" alt="Рейтинг товара">`
-        }
-        if (ratingCount === 4) {
-            allStars = `<img src="../assets/images/Star-1.svg" alt="Рейтинг товара">
-                        <img src="../assets/images/Star-1.svg" alt="Рейтинг товара">
-                        <img src="../assets/images/Star-1.svg" alt="Рейтинг товара">
-                        <img src="../assets/images/Star-1.svg" alt="Рейтинг товара">`
-        }
-        if (ratingCount === 5) {
-            allStars = `<img src="../assets/images/Star-1.svg" alt="Рейтинг товара">
-                        <img src="../assets/images/Star-1.svg" alt="Рейтинг товара">
-                        <img src="../assets/images/Star-1.svg" alt="Рейтинг товара">
-                        <img src="../assets/images/Star-1.svg" alt="Рейтинг товара">
-                        <img src="../assets/images/Star-1.svg" alt="Рейтинг товара">`
-        }
-        if (ratingCount === 0) {
-            allStars = ''
+        let allStars = '';
+        for (let i = 0; i < ratingCount; i++) {
+            allStars += `<img src="../assets/images/star.svg" alt="Рейтинг">`
         }
 
         card.innerHTML += `
