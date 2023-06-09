@@ -1,8 +1,20 @@
-async function fetchTasks() {
-    let response = await fetch('https://dummyjson.com/products?limit=10')
-    let content = await response.json()
-    let items = content.products
-    let card = document.querySelector('.cards__content')
+const basketCountArea = document.querySelector('.basket__count');
+const basketTotalPriceArea = document.querySelector('.basket__price');
+let basketCount = 0;
+let totalPrice = 0;
+
+function fetchTasks() {
+    return fetch('https://dummyjson.com/products?limit=10')
+        .then(res => {
+            return res.json()
+        })
+        .then(cont => {
+            return cont.products
+        })
+}
+
+fetchTasks().then(items => {
+    const card = document.querySelector('.cards__content')
 
     for (let key in items) {
 
@@ -38,10 +50,26 @@ async function fetchTasks() {
                                 <div class="card__finalPrice">${priceAfterDiscount} ₽</div>
                             </div>
     
-                            <button class="card__btn_inBasket" data-price="${priceAfterDiscount}" >В корзину</button>
+                            <button class="card__btn_inBasket" data-price="${priceAfterDiscount}">В корзину</button>
                     </div>`
     }
-}
 
-fetchTasks()
+    const buttons = document.querySelectorAll('.card__btn_inBasket')
+    buttons.forEach(button => {
 
+        function addItemToBasket(event) {
+            if (event.target.dataset.price) {
+                basketCount++
+                basketCountArea.innerHTML = basketCount
+                totalPrice += Number(event.target.dataset.price)
+                basketTotalPriceArea.innerHTML = totalPrice
+                    .toLocaleString('ru-Ru') + ' ₽'
+            }
+            button.setAttribute('disabled', 'disabled')
+            button.textContent = 'Товар в корзине';
+            button.removeEventListener('click', addItemToBasket)
+        }
+
+        button.addEventListener('click', addItemToBasket)
+    })
+})
