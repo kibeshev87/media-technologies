@@ -73,7 +73,7 @@ body {
   text-decoration: none;
 }
 .header .basket__price {
-  width: 80px;
+  min-width: 128px;
 }
 .header .basket__count {
   width: 24px;
@@ -111,13 +111,13 @@ body {
   gap: 1px;
 }
 .section .card {
-  width: 209px;
-  min-height: 416px;
-  padding: 15px 15px 24px 15px;
+  padding: 15px 15px 24px;
   background-color: #FFFFFF;
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex: 0 0 209px;
+  margin: 1px;
 }
 .section .card__img {
   width: 141px;
@@ -191,7 +191,7 @@ body {
 }
 .section .card__btn_inBasket {
   cursor: pointer;
-  padding: 3px;
+  padding: 4px;
   min-width: 112px;
   height: 40px;
   margin-top: 26px;

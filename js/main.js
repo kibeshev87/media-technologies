@@ -11,10 +11,13 @@ function fetchTasks() {
         .then(cont => {
             return cont.products
         })
+        .catch(error => {
+            console.error('Ошибка при запросе')
+        })
 }
 
 fetchTasks().then(items => {
-    const card = document.querySelector('.cards__content')
+    const cardsContent = document.querySelector('.cards__content')
 
     for (let key in items) {
 
@@ -29,7 +32,50 @@ fetchTasks().then(items => {
             allStars += `<img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="Рейтинг">`
         }
 
-        card.innerHTML += `
+        // Создание объекта, который будет наполнен контентом
+        const card = document.createElement('div')
+        card.classList.add('card')
+
+        //  Я понимаю, что код должен быть однотипным,
+        // но я специально сделал вставку элеметов разными методами
+
+        //=======================
+        const cardImg = document.createElement('div')
+        cardImg.innerHTML = `<img class="card__img" src="${items[key].thumbnail}" alt="Фото товара">`
+        //=======================
+        const cardRating = document.createElement('div')
+        cardRating.classList.add('card__rating')
+        cardRating.innerHTML = `
+                    <span class="card__rating_stars">${allStars}</span>
+                    <span class="card__rating_numberOfReviews">${items[key].stock}</span>`
+        //=======================
+        const cardDescription = document.createElement('div')
+        cardDescription.classList.add('card__description')
+        cardDescription.innerHTML = `${items[key].description}`
+        //=======================
+        const cardPrice = document.createElement('div')
+        cardPrice.classList.add('card__price')
+        cardPrice.innerHTML = `
+                    <div class="card__oldPriceAndDiscountPercentage">
+                        <span class="card_oldPrice">${items[key].price} ₽</span>
+                        <span class="card_discount">${discountPercentage}%</span>
+                    </div>`
+        //=======================
+        cardPrice.insertAdjacentHTML(
+            'beforeend',
+            `<div class="card__finalPrice">${priceAfterDiscount} ₽</div>`
+        )
+        //=======================
+        card.prepend(cardImg) // метод prepend() Вставляет новый элемент внутрь и в начало объекта
+        card.append(cardRating, cardDescription, cardPrice) // метод append() Вставляет новый элемент внутрь и в конец объекта
+        card.insertAdjacentHTML( // метод insertAdjacentHTML() Вставляет текст, HTML, элемент
+            'beforeend', // первый параметр указывает место вставки второго параметра
+            `<button class="card__btn_inBasket" data-price="${priceAfterDiscount}">В корзину</button>`
+        )
+        //=======================
+        cardsContent.append(card)
+
+        /*card.innerHTML += `
         <div class="card">
                         <img class="card__img" src="${items[key].thumbnail}" alt="Фото товара">
 
@@ -51,7 +97,7 @@ fetchTasks().then(items => {
                             </div>
     
                             <button class="card__btn_inBasket" data-price="${priceAfterDiscount}">В корзину</button>
-                    </div>`
+                    </div>`*/
     }
 
     const buttons = document.querySelectorAll('.card__btn_inBasket')
@@ -73,3 +119,4 @@ fetchTasks().then(items => {
         button.addEventListener('click', addItemToBasket)
     })
 })
+

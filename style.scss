@@ -31,6 +31,7 @@ html, body {
   font-size: 14px;
   -ms-text-size-adjust: 100%;
 }
+
 //
 //input, button, textarea {
 //  font-family: inherit;
@@ -119,7 +120,7 @@ body {
   }
 
   .basket__price {
-    width: 80px;
+    min-width: 128px;
   }
 
   .basket__count {
@@ -161,13 +162,13 @@ body {
   }
 
   .card {
-    width: 209px;
-    min-height: 416px;
-    padding: 15px 15px 24px 15px;
+    padding: 15px 15px 24px;
     background-color: $whiteBgColor;
     display: flex;
     flex-direction: column;
     align-items: center;
+    flex: 0 0 209px;
+    margin: 1px;
   }
 
   .card__img {
@@ -252,7 +253,7 @@ body {
 
   .card__btn_inBasket {
     cursor: pointer;
-    padding: 3px;
+    padding: 4px;
     min-width: 112px;
     height: 40px;
     margin-top: 26px;
@@ -267,6 +268,7 @@ body {
     &:hover {
       background-color: rgba(250, 225, 225, 0.3);
     }
+
     &:disabled {
       background-color: rgba(250, 225, 225, 0.3);
       cursor: auto;
